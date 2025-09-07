@@ -1,0 +1,5 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.n8nImageNamespace }}
