@@ -1,1 +1,64 @@
-# values.yaml placeholder from complete chart
+# Default values for n8n OpenShift Helm chart
+
+name: n8n
+namespace: bf5ef6-dev
+n8nImageNamespace: bf5ef6-tools
+clusterName: gold
+
+resources:
+  cpuRequest: 100m
+  cpuLimit: "1"
+  memoryRequest: 256Mi
+  memoryLimit: 4Gi
+
+storage:
+  pvcSize: 5Gi
+  redisSize: 1Gi
+  postgresSize: 10Gi
+
+credentials:
+  n8nUser: n8n
+  n8nPassword: ""         
+  n8nEncryptionKey: ""    
+  dbPassword: ""          
+  redisPassword: ""       
+
+env:
+  timezone: "America/Vancouver"
+  nodeEnv: "production"
+  smtp:
+    host: "apps.smtp.gov.bc.ca"
+    port: "25"
+    user: "no-reply@gov.bc.ca"
+    pass: "nopassword"
+    sender: "no-reply@gov.bc.ca"
+    ssl: "false"
+  db:
+    type: "postgresdb"
+    host: "postgresql-n8n"
+    port: "5432"
+    schema: "public"
+  redis:
+    host: "redis-n8n"
+    port: "6379"
+    db: "0"
+    timeoutThreshold: "20"
+    recoveryInterval: "10"
+  n8n:
+    port: "5678"
+    emailMode: "smtp"
+    basicAuthActive: "true"
+    metrics: "true"
+    binaryDataMode: "filesystem"
+    disableProductionMain: "true"
+    executionsProcess: "queue"
+    executionsMode: "queue"
+
+build:
+  image: registry.access.redhat.com/ubi8/nodejs-18:latest
+  limits:
+    cpu: 1400m
+    memory: 3Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
