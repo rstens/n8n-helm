@@ -1,5 +1,0 @@
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
-metadata:
-  name: {{ .Values.name }}
-  namespace: {{ .Values.namespace }}
