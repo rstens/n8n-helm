@@ -1,0 +1,10 @@
+# Ignore Helm release artifacts
+*.tgz
+.chartworkspace
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
